@@ -75,7 +75,7 @@ def calculate_means(dataframe):
 
 
 def forecast(dataframe, means):
-    """Прогноз на 2023 год по различным методам."""
+    """Прогноз на 2022 год по различным методам."""
     y_first = dataframe.iloc[0, 1]
     y_last = dataframe.iloc[-2, 1]
     n = len(dataframe) - 2
@@ -138,7 +138,8 @@ def plot_visits_trend(dataframe, a, b):
     plt.scatter(years, attend_counts, color='blue', marker='o')
 
     for i, txt in enumerate(attend_counts):
-        plt.annotate(txt, (years[i], attend_counts[i]), textcoords="offset points", xytext=(0, 10), ha='center')
+        plt.annotate(txt, (years[i], attend_counts[i]),
+                     textcoords="offset points", xytext=(0, 10), ha='center')
 
     linear_line = b * t_values + a
     plt.plot(years, linear_line, color='red', label=f'Прямая: y = {b}*t + {a}')

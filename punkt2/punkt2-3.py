@@ -29,7 +29,7 @@ def compute_discrete_distribution(data):
 def compute_interval_distribution(data):
     """Вычисляет интервальное распределение."""
     discrete_distribution = compute_discrete_distribution(data)
-    num_intervals = int(np.ceil(1 + 3.222 * np.log10(max(data) - min(data))))
+    num_intervals = int(np.ceil(1 + 3.222 * np.log10(len(data))))
     interval_length = int(np.ceil((max(data) - min(data)) / num_intervals))
 
     intervals = [(i, i + interval_length) for i in range(min(data), max(data), interval_length)]
@@ -39,7 +39,7 @@ def compute_interval_distribution(data):
         for value, count in discrete_distribution.items():
             if interval[0] <= value < interval[1]:
                 frequencies[i] += count
-                
+
     return intervals, frequencies, num_intervals, interval_length
 
 
@@ -231,6 +231,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
 
